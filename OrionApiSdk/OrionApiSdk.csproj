@@ -89,11 +89,14 @@
     <Compile Include="Classes\Portfolio\RepresentativeSimple.cs" />
     <Compile Include="Classes\Portfolio\Simple.cs" />
     <Compile Include="Classes\Portfolio\SimpleValue.cs" />
+    <Compile Include="Classes\Enums\TradeStatuses.cs" />
+    <Compile Include="Classes\Trading\Transaction.cs" />
     <Compile Include="Code\ApiBase.cs" />
     <Compile Include="Code\Authorization.cs" />
     <Compile Include="Code\LaserApp.cs" />
     <Compile Include="Code\OrionConnectLinks.cs" />
     <Compile Include="Code\Portfolio.cs" />
+    <Compile Include="Code\Trading.cs" />
     <Compile Include="OrionApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
