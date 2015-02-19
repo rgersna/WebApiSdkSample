@@ -73,6 +73,10 @@
     <Compile Include="Classes\Authorization\User.cs" />
     <Compile Include="Classes\Enums\Entity.cs" />
     <Compile Include="Classes\Enums\OrionEnvironment.cs" />
+    <Compile Include="Classes\Enums\PricingStatus.cs" />
+    <Compile Include="Classes\Enums\ProductStatus.cs" />
+    <Compile Include="Classes\Enums\ProductTypes.cs" />
+    <Compile Include="Classes\Enums\ProductUses.cs" />
     <Compile Include="Classes\LaserApp\Form.cs" />
     <Compile Include="Classes\Portfolio\Account.cs" />
     <Compile Include="Classes\Portfolio\AccountSimple.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Classes\Portfolio\ClientSimple.cs" />
     <Compile Include="Classes\Portfolio\ClientVerbose.cs" />
     <Compile Include="Classes\Portfolio\AccountStatus.cs" />
+    <Compile Include="Classes\Portfolio\Product.cs" />
     <Compile Include="Classes\Portfolio\Registration.cs" />
     <Compile Include="Classes\Portfolio\RegistrationSimple.cs" />
     <Compile Include="Classes\Portfolio\RegistrationVerbose.cs" />

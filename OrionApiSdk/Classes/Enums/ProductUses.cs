@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace OrionApiSdk.Classes.Enums
 {
-    public enum TradeStatuses
+    public enum ProductUses
     {
-        Complete = 1,
-        Pending = 2,
-        Rejected = 3,
-        Reversed = 4,
-        Inactive = 5
+        UsedInCurrentDB = 0,
+        UsedInOtherDB = 1,
+        NotUsed = 2
     }
 }
