@@ -134,9 +134,6 @@ namespace OrionApiSdk.Code.Tests
             var uid = secret.Key;
             var pass = secret.Value;
 
-            var jsonConfig = System.IO.File.ReadAllText(String.Format(@"C:\temp\{0}_config.json"
-                , this.GetType().Name));
-
             var accts = GetConfigValue(System.Reflection.MethodInfo
                 .GetCurrentMethod().Name, "Filter");
             var expected = 1;
