@@ -37,8 +37,8 @@ namespace OrionApiSdk.Classes.Trading
         public decimal AvgPrice { get; set; }
         public DateTime ExecutionTime { get; set; }
         public int TransTypeId { get; set; }
-        public int ContributionCodeId { get; set; }
-        public int DistributionCodeId { get; set; }
+        public int? ContributionCodeId { get; set; }
+        public int? DistributionCodeId { get; set; }
         public int ClientId { get; set; }
     }
 }

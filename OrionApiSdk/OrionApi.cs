@@ -29,6 +29,12 @@ namespace OrionApiSdk
             get { return _portfolio ?? ( _portfolio = new Code.Portfolio( _httpClient ) ); }
         }
 
+        private static Code.Trading _trading;
+        public static Code.Trading Trading
+        {
+            get { return _trading ?? (_trading = new Code.Trading(_httpClient)); }
+        }
+
         private static Code.Authorization _authorization;
         public static Code.Authorization Authorization
         {
@@ -107,7 +113,8 @@ namespace OrionApiSdk
         /// <returns></returns>
         public static bool Authenticate(string authToken, OrionEnvironment? environment = null)
         {
-            if( environment != null ) {
+            if (environment != null)
+            {
                 if (environment == OrionEnvironment.Test)
                 {
                     _apiUrl = TESTAPIURL;
@@ -131,22 +138,25 @@ namespace OrionApiSdk
 
             var response = client.GetAsync("authorization/user").Result;
 
-            if( response.IsSuccessStatusCode ) {
+            if (response.IsSuccessStatusCode)
+            {
                 // save the token for future calls to web api.  The httpclient gets the "Session" auth header with the auth token form this point forward.
                 AuthToken = authToken;
-                _httpClient = new HttpClient {
-                    BaseAddress = new Uri( _apiUrl )
+                _httpClient = new HttpClient
+                {
+                    BaseAddress = new Uri(_apiUrl)
                 };
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue( "Session", AuthToken );
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Session", AuthToken);
                 reset();
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
 
 
         }
-
 
         #endregion
 

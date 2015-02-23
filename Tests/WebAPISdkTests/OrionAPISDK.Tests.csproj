@@ -6,8 +6,8 @@
     <ProjectGuid>{0F9E106F-FAFE-4B3B-934C-54F0E098D18B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebAPISdkTests</RootNamespace>
-    <AssemblyName>WebAPISdkTests</AssemblyName>
+    <RootNamespace>OrionApiSdk.Tests</RootNamespace>
+    <AssemblyName>OrionApiSdk.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,17 +58,19 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Code\PortfolioTests.cs" />
+    <Compile Include="Code\TestBase.cs" />
+    <Compile Include="Code\TradingTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OrionApiSdk\OrionApiSdk.csproj">
       <Project>{77734886-e0b0-4ed0-ab08-6fdc9dd07dbd}</Project>
       <Name>OrionApiSdk</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

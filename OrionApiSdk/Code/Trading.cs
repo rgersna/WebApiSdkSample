@@ -16,14 +16,14 @@ namespace OrionApiSdk.Code
 
         public List<Transaction> Transactions(DateTime startDate, DateTime endDate)
         {
-            var endpoint = string.Format("Trading/Transactions?status={0}&startDate={1}&endDate={2}", startDate,endDate);
+            var endpoint = string.Format("Trading/Transactions?startDate={0}&endDate={1}", startDate,endDate);
             var j = base.GetJson(endpoint);
             var d = JsonConvert.DeserializeObject<List<Transaction>>(j);
 
             return d;
         }
 
-        public Transaction Transaction(int Id)
+        public Transaction Transactions(int Id)
         {
             var endpoint = string.Format("Trading/Transactions/{0}", Id);
 
