@@ -16,11 +16,9 @@ namespace OrionApiSdk.Tests
         //2) Trading.Transactions needs nullables for ContributionId and DistributionId 
         //3) Proxy defaults to OrionEnvironment.Test if you pass null for environment. If you have a sample DB in production
         //   add a config item named Environment to auth to change the environment.
-        //4) Proxy defaults to OrionAPI Url. To override  - add parameters to auth named BaseUrl and ConnectUrl
+        //4) 
         //5)
         //6)
-
-
 
         /// <summary>
         /// Use this method to generate a auth template for the REST API

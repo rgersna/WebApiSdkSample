@@ -11,121 +11,6 @@ namespace OrionApiSdk.Tests
     [TestClass()]
     public class PortfolioTests : TestBase
     {
-       
-
-        [TestMethod()]
-        public void ClientsTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientsSimpleTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientsValueTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientsSearchTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientsSearchValueTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientVerboseNewTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientVerboseTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ClientSaveTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationsSimpleTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationVerboseTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationVerboseNewTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationSaveTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationsSearchTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationsTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RegistrationsForClientTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RepresentativesSimpleTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AccountsTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AccountsSimpleTest()
-        {
-        }
-
-        [TestMethod()]
-        public void AccountsValueTest()
-        {
-            Assert.Fail();
-        }
-
         [TestMethod()]
         public void AccountsSearchTest()
         {
@@ -157,77 +42,15 @@ namespace OrionApiSdk.Tests
                 
         }
 
-        [TestMethod()]
-        public void AccountsValueSearchTest()
+        [TestMethod]
+        public void AccountsTest()
         {
-            Assert.Fail();
-        }
+            Authenticate();
 
-        [TestMethod()]
-        public void AccountsVerboseTest()
-        {
-            Assert.Fail();
-        }
+            var from = DateTime.Parse("07/15/2014");
+            var actual = OrionApi.Portfolio.Accounts(createdDateStart: from, isActive: true);
+            Assert.IsTrue(actual.Count > 0);
 
-        [TestMethod()]
-        public void AccountVerboseTest()
-        {
-            Assert.Fail();
         }
-
-        [TestMethod()]
-        public void AccountVerboseNewTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AccountSaveTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AccountStatusesTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AccountTypesTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void BrokerDealersSimpleTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void CustodiansSimpleTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void FundFamiliesSimpleTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RepresentativesSimpleTest1()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void PlatformsSimpleTest()
-        {
-            Assert.Fail();
-        }
-
     }
 }

@@ -71,23 +71,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Authorization\User.cs" />
+    <Compile Include="Classes\Enums\AccountFilterValues.cs" />
     <Compile Include="Classes\Enums\Entity.cs" />
+    <Compile Include="Classes\Enums\ExcludeAmountTypes.cs" />
     <Compile Include="Classes\Enums\OrionEnvironment.cs" />
     <Compile Include="Classes\Enums\PricingStatus.cs" />
     <Compile Include="Classes\Enums\ProductStatus.cs" />
     <Compile Include="Classes\Enums\ProductTypes.cs" />
     <Compile Include="Classes\Enums\ProductUses.cs" />
+    <Compile Include="Classes\Enums\ReturnStyle.cs" />
     <Compile Include="Classes\LaserApp\Form.cs" />
     <Compile Include="Classes\Portfolio\Account.cs" />
     <Compile Include="Classes\Portfolio\AccountSimple.cs" />
     <Compile Include="Classes\Portfolio\AccountSimpleValue.cs" />
     <Compile Include="Classes\Portfolio\AccountTypeSimple.cs" />
     <Compile Include="Classes\Portfolio\AccountVerbose.cs" />
+    <Compile Include="Classes\Portfolio\Asset.cs" />
+    <Compile Include="Classes\Portfolio\AssetVerbose.cs" />
     <Compile Include="Classes\Portfolio\Client.cs" />
     <Compile Include="Classes\Portfolio\ClientSimple.cs" />
     <Compile Include="Classes\Portfolio\ClientVerbose.cs" />
     <Compile Include="Classes\Portfolio\AccountStatus.cs" />
+    <Compile Include="Classes\Portfolio\EntityOption.cs" />
     <Compile Include="Classes\Portfolio\Product.cs" />
+    <Compile Include="Classes\Portfolio\ProductCategory.cs" />
     <Compile Include="Classes\Portfolio\Registration.cs" />
     <Compile Include="Classes\Portfolio\RegistrationSimple.cs" />
     <Compile Include="Classes\Portfolio\RegistrationVerbose.cs" />
@@ -95,6 +102,7 @@
     <Compile Include="Classes\Portfolio\Simple.cs" />
     <Compile Include="Classes\Portfolio\SimpleValue.cs" />
     <Compile Include="Classes\Enums\TradeStatuses.cs" />
+    <Compile Include="Classes\Portfolio\Transaction.cs" />
     <Compile Include="Classes\Trading\Transaction.cs" />
     <Compile Include="Code\ApiBase.cs" />
     <Compile Include="Code\Authorization.cs" />

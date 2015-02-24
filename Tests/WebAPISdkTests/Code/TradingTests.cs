@@ -17,7 +17,7 @@ namespace OrionApiSdk.Tests
         public void TransactionsTest()
         {
             var startDate = DateTime.MinValue;
-            var endDate = DateTime.MinValue;
+            var toDate = DateTime.MinValue;
             var expected = 1;
 
             #region GetTestData
@@ -30,14 +30,14 @@ namespace OrionApiSdk.Tests
                 if (d.Key.ToString() == "StartDate")
                     startDate = DateTime.Parse(d.Value.ToString());
                 if (d.Key.ToString() == "EndDate")
-                    endDate = DateTime.Parse(d.Value.ToString());
+                    toDate = DateTime.Parse(d.Value.ToString());
             }
             #endregion
 
             try
             {
                 Authenticate();
-                var actual = OrionApi.Trading.Transactions(startDate, endDate);
+                var actual = OrionApi.Trading.Transactions(status: TradeStatuses.Complete, startDate: startDate, endDate: toDate);
                 Assert.IsTrue(expected < actual.Count);
             }
             catch (Exception ex)
@@ -70,8 +70,6 @@ namespace OrionApiSdk.Tests
                 Assert.Fail();
             }
         }
-
-  
-        
+ 
     }
 }

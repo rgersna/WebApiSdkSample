@@ -2,6 +2,9 @@
 using System.Net.Http;
 using Newtonsoft.Json;
 using OrionApiSdk.Classes.Portfolio;
+using System.Text;
+using System;
+using OrionApiSdk.Classes.Enums;
 
 namespace OrionApiSdk.Code
 {
@@ -220,6 +223,19 @@ namespace OrionApiSdk.Code
             return d;
         }
 
+        public List<Account> Accounts(int top = 50000, int skip = 0, bool? isActive = null, bool? isManaged = null
+            ,DateTime? createdDateStart = null, AccountFilterValues? newAccountFIlter = null, string accountFilter = null
+            ,ReturnStyle returnStyle = ReturnStyle.Standard)
+        {
+            var endpoint = string.Format(@"Portfolio/Accounts?isActive={0}&isManaged={1}&createdDateStart={2}
+                &newAccountFilter={3}&accountFilter={4}&returnStyle={5}&$top={6}&$skip={7}"
+                , isActive, isManaged, createdDateStart, newAccountFIlter, accountFilter, returnStyle, top, skip);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<List<Account>>(j);
+
+            return d;
+        }
+
         public List<AccountSimple> AccountsSimple(int top = 50000, int skip = 0, bool? hasValue = null, bool? isActive = null)
         {
             var endpoint = string.Format("Portfolio/Accounts/Simple?hasValue={0}&isActive={1}&$top={2}&$skip={3}", hasValue, isActive, top, skip);
@@ -313,6 +329,104 @@ namespace OrionApiSdk.Code
 
         #endregion
 
+        #region Assets
+
+        public List<Asset> Assets(int top = 50000, int skip = 0, int? clientId = null, int? registrationId = null
+            , int? accountId = null, int? productId = null, bool includeCostBasis = false )
+        {
+            var endpoint = string.Format("Portoflio/Assets?clientId={0}&registrationId={1}&accountId={2}&productId={3}&includeCostBasis={4}&$top={0}&skip={5}"
+                ,clientId, registrationId, accountId, productId, includeCostBasis, top, skip);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<List<Asset>>(j);
+
+            return d;
+        }
+
+        public AssetVerbose AssetsVerbose(AssetVerbose asset)
+        {
+            var endpoint = "Portoflio/Assets/Verbose";
+            var body = JsonConvert.SerializeObject(asset);
+            var j = base.PostJson(endpoint, body);
+            var d = JsonConvert.DeserializeObject<AssetVerbose>(j);
+
+            return d;
+        }
+
+        public Asset Assets(int assetId, bool includeCostBasis = false)
+        {
+            var endpoint = string.Format("Portfolio/Assets/{0}?includeCostBasis={1}", assetId, includeCostBasis);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Asset>(j);
+
+            return d;
+        }
+
+
+        #endregion
+        
+        #region Products
+
+        public List<Product> Products(string productFilter = null, DateTime? ownedOnDate = null, string searchTicker = null
+            , string exactTicker = null, string exactCusip = null, string searchCusip = null, string exactDownloadSymbol = null
+            , string searchDownloadSymbol = null, string exactSymbol = null, string searchsymbol = null, string searchName = null
+            , string searchId = null, ProductTypes productType = 0, ReturnStyle? returnStyle = null)
+        {
+            //TODO : Optional paramets must appear after all requiredparameters. Is ProductType optional? can an enum be nullable?
+            var endpoint = string.Format(@"Portfolio/Products?productFilter={0}&ownedOnDate={1}&searchTicker={2}&exactTicker={3}&exactCusip={4}
+                &searchCusip={5}&exactDownloadSymbol={6}&searchDownloadSymbol={7}&exactSymbol={8}&searchSymbol={9}
+                &searchName={10}&searchId={11}&productType={12}&returnStyle={13}"
+                , productFilter, ownedOnDate, searchTicker, exactTicker, exactCusip, searchCusip, exactDownloadSymbol
+                , searchDownloadSymbol, exactSymbol, searchsymbol, searchName, searchId, productType, returnStyle);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<List<Product>>(j);
+
+            return d;
+        }
+
+        public Product Products(int productId, ReturnStyle? returnStyle = null)
+        {
+            var endpoint = string.Format("Portfolio/Products/{0}?returnStyle={1}", productId, returnStyle);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Product>(j);
+
+            return d;
+        }
+
+        #endregion
+
+        #region Transactions
+        public List<Transaction> Transactions(TradeStatuses status = 0
+         , DateTime? startDate = null, DateTime? endDate = null, int[] transTypeIds = null
+         , int? clientId = null, int? registrationId = null, int? accountId = null, int? assetId = null
+         , int? transactionId = null, ReturnStyle? returnStyle = null)
+        {
+            var endpoint = new StringBuilder();
+            endpoint.AppendFormat(@"Portfolio/Transactions?status={status}&startDate={startDate}&endDate={endDate}
+            &clientId={clientId}&registrationId={registrationId}&accountId={accountId}&assetId={assetId}
+            &transactionId={transactionId}&returnStyle={returnStyle}"
+                , status, startDate, endDate, clientId, registrationId, accountId, assetId, transactionId, returnStyle);
+
+            if (transTypeIds != null)
+                for (int i = 0; i < transTypeIds.Length; i++)
+                    endpoint.AppendFormat("&transTypeId{0}={1}", i, transTypeIds[i]);
+
+            var j = base.GetJson(endpoint.ToString());
+            var d = JsonConvert.DeserializeObject<List<Transaction>>(j);
+
+            return d;
+        }
+
+        public Transaction Transactions(int Id)
+        {
+            var endpoint = string.Format("Portfolio/Transactions/{0}", Id);
+
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Transaction>(j);
+
+            return d;
+        }
+        #endregion
+
         #region Lookup Tables
         public List<AccountStatus> AccountStatuses()
         {
@@ -373,6 +487,15 @@ namespace OrionApiSdk.Code
             var endpoint = string.Format("Portfolio/Platforms/Simple");
             var j = base.GetJson(endpoint);
             var d = JsonConvert.DeserializeObject<List<Simple>>(j);
+
+            return d;
+        }
+
+        public List<ProductCategory> ProductCategories()
+        {
+            var endpoint = string.Format("Portfolio/ProductCategories");
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<List<ProductCategory>>(j);
 
             return d;
         }
