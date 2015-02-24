@@ -182,7 +182,7 @@ namespace OrionConnect_Api_Sample
         {
             if (!this.checkAuth()) return;
 
-            grdAccounts.DataSource = OrionApi.Portfolio.Accounts();
+            grdAccounts.DataSource = OrionApi.Portfolio.Accounts(isActive: true);
             this.setStatus(string.Format("{0} Accounts Loaded.", grdAccounts.RowCount), "/Portfolio/Accounts");
         }
 

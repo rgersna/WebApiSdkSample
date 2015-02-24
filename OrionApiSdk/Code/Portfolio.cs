@@ -214,15 +214,7 @@ namespace OrionApiSdk.Code
         #endregion
 
         #region Accounts
-        public List<Account> Accounts(int top = 50000, int skip = 0, bool? hasValue = null, bool? isActive = null)
-        {
-            var endpoint = string.Format("Portfolio/Accounts?hasValue={0}&isActive={1}&$top={2}&$skip={3}", hasValue, isActive, top, skip);
-            var j = base.GetJson(endpoint);
-            var d = JsonConvert.DeserializeObject<List<Account>>(j);
-
-            return d;
-        }
-
+      
         public List<Account> Accounts(int top = 50000, int skip = 0, bool? isActive = null, bool? isManaged = null
             ,DateTime? createdDateStart = null, AccountFilterValues? newAccountFIlter = null, string accountFilter = null
             ,ReturnStyle returnStyle = ReturnStyle.Standard)
