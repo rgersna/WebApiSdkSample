@@ -371,7 +371,6 @@ namespace OrionApiSdk.Code
             , string searchDownloadSymbol = null, string exactSymbol = null, string searchsymbol = null, string searchName = null
             , string searchId = null, ProductTypes productType = 0, ReturnStyle? returnStyle = null)
         {
-            //TODO : Optional paramets must appear after all requiredparameters. Is ProductType optional? can an enum be nullable?
             var endpoint = string.Format(@"Portfolio/Products?productFilter={0}&ownedOnDate={1}&searchTicker={2}&exactTicker={3}&exactCusip={4}
                 &searchCusip={5}&exactDownloadSymbol={6}&searchDownloadSymbol={7}&exactSymbol={8}&searchSymbol={9}
                 &searchName={10}&searchId={11}&productType={12}&returnStyle={13}"
