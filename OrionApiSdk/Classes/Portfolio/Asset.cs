@@ -17,7 +17,7 @@ namespace OrionApiSdk.Classes.Portfolio
         public string secondaryAccountNumber { get; set; }
         public string cusip { get; set; }
         public int productId { get; set; }
-        public int assetLevelStrategyId { get; set; }
+        public int? assetLevelStrategyId { get; set; }
         public string assetLevelStrategy { get; set; }
         public int status { get; set; }
         public bool isStrategyOverride { get; set; }
@@ -33,9 +33,10 @@ namespace OrionApiSdk.Classes.Portfolio
         public string accountType { get; set; }
         public string fundFamily { get; set; }
         public string custodian { get; set; }
-        public DateTime asOfDate { get; set; }
-        public ProductTypes productType { get; set; }
-        public decimal costBasis { get; set; }
+        public DateTime? asOfDate { get; set; }
+       // public ProductTypes productType { get; set; } "Stock/ETF"
+        public string ProductType { get; set; }
+        public decimal? costBasis { get; set; }
 
     }
 }

@@ -324,21 +324,40 @@ namespace OrionApiSdk.Code
         #region Assets
 
         public List<Asset> Assets(int top = 50000, int skip = 0, int? clientId = null, int? registrationId = null
-            , int? accountId = null, int? productId = null, bool includeCostBasis = false )
+            , int? accountId = null, int? productId = null, bool includeCostBasis = false)
         {
-            var endpoint = string.Format("Portoflio/Assets?clientId={0}&registrationId={1}&accountId={2}&productId={3}&includeCostBasis={4}&$top={0}&skip={5}"
-                ,clientId, registrationId, accountId, productId, includeCostBasis, top, skip);
+            var endpoint = string.Format("Portfolio/Assets?clientId={0}&registrationId={1}&accountId={2}&productId={3}&includeCostBasis={4}&$top={5}&skip={6}"
+                , clientId, registrationId, accountId, productId, includeCostBasis, top, skip);
             var j = base.GetJson(endpoint);
-            var d = JsonConvert.DeserializeObject<List<Asset>>(j);
 
+            var d = JsonConvert.DeserializeObject<List<Asset>>(j);
             return d;
+
         }
 
-        public AssetVerbose AssetsVerbose(AssetVerbose asset)
+     
+        public AssetVerbose AssetsVerbose(int id, AssetVerboseOptions? options )
         {
-            var endpoint = "Portoflio/Assets/Verbose";
-            var body = JsonConvert.SerializeObject(asset);
-            var j = base.PostJson(endpoint, body);
+            var endpoint = String.Format("Portfolio/Assets/Verbose/{0}", id);
+            
+            var i=0;
+            if(options.HasValue)
+            {
+                endpoint += "?";
+                foreach (AssetVerboseOptions value in Enum.GetValues(typeof(AssetVerboseOptions)))
+                {
+                    if (value == AssetVerboseOptions.None)
+                        continue;
+
+                    if (options.Value.HasFlag(value))
+                    {
+                         endpoint += String.Format("&expand[{0}]={1}", i, value);
+                         i++;
+                    }
+                }
+            }
+
+            var j = base.GetJson(endpoint);
             var d = JsonConvert.DeserializeObject<AssetVerbose>(j);
 
             return d;

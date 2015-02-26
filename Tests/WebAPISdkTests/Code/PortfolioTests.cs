@@ -54,6 +54,122 @@ namespace OrionApiSdk.Tests
         }
 
         [TestMethod]
+        public void AssetsTest()
+        {
+            Authenticate();
+
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var accountId = 0;
+            var productId = 0;
+
+            foreach (dynamic d in config)
+            {
+                if (d.Key.ToString() == "AccountId")
+                    accountId = int.Parse(d.Value.ToString());
+                if (d.Key.ToString() == "ProductId")
+                    productId = int.Parse(d.Value.ToString());
+            }
+               var actual = OrionApi.Portfolio.Assets(accountId: accountId, productId: productId);
+                Assert.IsTrue(actual.Count > 0);
+        }
+
+        [TestMethod]
+        public void Can_Get_AssetsVerbose_Without_Expands()
+        {
+            Authenticate();
+
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var assetId = 0;
+            
+            foreach (dynamic d in config)
+                if (d.Key.ToString() == "AssetId")
+                    assetId = int.Parse(d.Value.ToString());
+            try
+            {
+                var actual = OrionApi.Portfolio.AssetsVerbose(assetId, null);
+                Assert.IsNotNull(actual.name);
+
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText(String.Format(@"c:\temp\TestsResults_{0}", DateTime.Today.ToString("MM-yyyy"))
+                    , String.Format("{0}.{1}.{2}.E:{3}\n", this.GetType().Name, System.Reflection.MethodInfo.GetCurrentMethod().Name
+                    , DateTime.Now.ToString("MM-dd-yyyy_hh:mm:ss"), ex.Message));
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void Can_Get_AssetsVerbose_With_Expands_None()
+        {
+            Authenticate();
+
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var assetId = 0;
+
+            foreach (dynamic d in config)
+                if (d.Key.ToString() == "AssetId")
+                    assetId = int.Parse(d.Value.ToString());
+           
+            AssetVerboseOptions? options = AssetVerboseOptions.None;
+
+            try
+            {
+                var actual = OrionApi.Portfolio.AssetsVerbose(assetId, options);
+                Assert.IsNotNull(actual.name);
+
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText(String.Format(@"c:\temp\TestsResults_{0}", DateTime.Today.ToString("MM-yyyy"))
+                    , String.Format("{0}.{1}.{2}.E:{3}\n", this.GetType().Name, System.Reflection.MethodInfo.GetCurrentMethod().Name
+                    , DateTime.Now.ToString("MM-dd-yyyy_hh:mm:ss"), ex.Message));
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void Can_Get_AssetsVerbose_With_Expands()
+        {
+            //trying to use navigation properties in querystring
+            //Why can't I get this to return a known asset?
+            Authenticate();
+
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var assetId = 0;
+
+            foreach (dynamic d in config)
+                if (d.Key.ToString() == "AssetId")
+                    assetId = int.Parse(d.Value.ToString());
+
+            AssetVerboseOptions options = AssetVerboseOptions.Bifurcates;
+            options |= AssetVerboseOptions.Billing;
+            options |= AssetVerboseOptions.Portfolio;
+
+            try
+            {
+                var actual = OrionApi.Portfolio.AssetsVerbose(assetId, options);
+                Assert.IsNotNull(actual.name);
+
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.AppendAllText(String.Format(@"c:\temp\TestsResults_{0}", DateTime.Today.ToString("MM-yyyy"))
+                    , String.Format("{0}.{1}.{2}.E:{3}\n", this.GetType().Name, System.Reflection.MethodInfo.GetCurrentMethod().Name
+                    , DateTime.Now.ToString("MM-dd-yyyy_hh:mm:ss"), ex.Message));
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
         public void Can_Get_Product_By_Id()
         {
             /*

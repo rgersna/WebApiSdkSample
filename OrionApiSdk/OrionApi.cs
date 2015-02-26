@@ -60,7 +60,6 @@ namespace OrionApiSdk
 
         #endregion
 
-
         #region Authentication
         public static string AuthToken { get; set; }
 

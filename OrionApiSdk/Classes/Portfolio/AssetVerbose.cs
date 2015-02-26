@@ -83,7 +83,7 @@ namespace OrionApiSdk.Classes.Portfolio
         public int productId { get; set; }
         public string assetClass { get; set; }
         public bool isCustodialCash { get; set; }
-        public int assetLevelStrategyId { get; set; }
+        public int? assetLevelStrategyId { get; set; }
         public int status { get; set; }
         public string createdBy { get; set; }
         public DateTime createdDate { get; set; }
