@@ -12,7 +12,7 @@ namespace OrionApiSdk.Classes.Enums
         MutualFund = 1,
         Annuity = 2,
         AdvisorOne = 3,
-        StockOrETF = 4,
+        StockOrETF = 4, //"Stock/ETF"
         Option = 5,
         Bond = 6,
         Unknown = 7,

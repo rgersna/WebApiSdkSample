@@ -216,12 +216,12 @@ namespace OrionApiSdk.Code
         #region Accounts
       
         public List<Account> Accounts(int top = 50000, int skip = 0, bool? isActive = null, bool? isManaged = null
-            ,DateTime? createdDateStart = null, AccountFilterValues? newAccountFIlter = null, string accountFilter = null
+            ,DateTime? createdDateStart = null, AccountFilterValues? newAccountFilter = null, string accountFilter = null
             ,ReturnStyle returnStyle = ReturnStyle.Standard)
         {
             var endpoint = string.Format(@"Portfolio/Accounts?isActive={0}&isManaged={1}&createdDateStart={2}
                 &newAccountFilter={3}&accountFilter={4}&returnStyle={5}&$top={6}&$skip={7}"
-                , isActive, isManaged, createdDateStart, newAccountFIlter, accountFilter, returnStyle, top, skip);
+                , isActive, isManaged, createdDateStart, newAccountFilter, accountFilter, returnStyle, top, skip);
             var j = base.GetJson(endpoint);
             var d = JsonConvert.DeserializeObject<List<Account>>(j);
 
@@ -361,12 +361,13 @@ namespace OrionApiSdk.Code
         public List<Product> Products(string productFilter = null, DateTime? ownedOnDate = null, string searchTicker = null
             , string exactTicker = null, string exactCusip = null, string searchCusip = null, string exactDownloadSymbol = null
             , string searchDownloadSymbol = null, string exactSymbol = null, string searchsymbol = null, string searchName = null
-            , string searchId = null, ProductTypes productType = 0, ReturnStyle? returnStyle = null)
+            , string searchId = null, ProductTypes? productType = null, ReturnStyle? returnStyle = null)
         {
-            var endpoint = string.Format(@"Portfolio/Products?productFilter={0}&ownedOnDate={1}&searchTicker={2}&exactTicker={3}&exactCusip={4}
-                &searchCusip={5}&exactDownloadSymbol={6}&searchDownloadSymbol={7}&exactSymbol={8}&searchSymbol={9}
-                &searchName={10}&searchId={11}&productType={12}&returnStyle={13}"
-                , productFilter, ownedOnDate, searchTicker, exactTicker, exactCusip, searchCusip, exactDownloadSymbol
+            var url = @"Portfolio/Products?productFilter={0}&ownedOnDate={1}&searchTicker={2}&exactTicker={3}&exactCusip={4}" +
+                       "&searchCusip={5}&exactDownloadSymbol={6}&searchDownloadSymbol={7}&exactSymbol={8}" + 
+                       "&searchSymbol={9}&searchName={10}&searchId={11}&productType={12}&returnStyle={13}";
+            var endpoint = string.Format(url,
+                productFilter, ownedOnDate, searchTicker, exactTicker, exactCusip, searchCusip, exactDownloadSymbol
                 , searchDownloadSymbol, exactSymbol, searchsymbol, searchName, searchId, productType, returnStyle);
             var j = base.GetJson(endpoint);
             var d = JsonConvert.DeserializeObject<List<Product>>(j);
