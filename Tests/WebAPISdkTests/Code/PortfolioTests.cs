@@ -36,8 +36,8 @@ namespace OrionApiSdk.Tests
             }
             catch (Exception ex)
             {
-                HandleError(System.Reflection.MethodInfo.GetCurrentMethod().Name, ex);
-                Assert.Fail();
+                HandleError(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name
+                                   , System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
             }
                 
         }
@@ -153,6 +153,11 @@ namespace OrionApiSdk.Tests
             AssetVerboseOptions options = AssetVerboseOptions.Bifurcates;
             options |= AssetVerboseOptions.Billing;
             options |= AssetVerboseOptions.Portfolio;
+            options |= AssetVerboseOptions.CostBasisHistories;
+            options |= AssetVerboseOptions.CostBasisLots;
+            options |= AssetVerboseOptions.EntityOptions;
+            options |= AssetVerboseOptions.StepUps;
+            options |= AssetVerboseOptions.UserDefinedFields;
 
             try
             {
@@ -167,6 +172,29 @@ namespace OrionApiSdk.Tests
                     , DateTime.Now.ToString("MM-dd-yyyy_hh:mm:ss"), ex.Message));
                 Assert.Fail();
             }
+        }
+
+        [TestMethod]
+        public void Can_Get_CashValue_ForAccount()
+        {
+            Authenticate();
+
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var accountId = 0;
+            var productId = 0;
+
+            foreach (dynamic d in config)
+            {
+                if (d.Key.ToString() == "AccountId")
+                    accountId = int.Parse(d.Value.ToString());
+                if (d.Key.ToString() == "ProductId")
+                    productId = int.Parse(d.Value.ToString());
+            }
+            var actual = OrionApi.Portfolio.Assets(accountId: accountId, productId: productId);
+            Assert.IsTrue(actual.Count.Equals(1));
+            Assert.IsTrue(actual[0].currentValue > 0);
         }
 
         [TestMethod]
@@ -215,6 +243,36 @@ namespace OrionApiSdk.Tests
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Count.Equals(1));
             Assert.IsTrue(actual[0].productName == "Apple Inc");
+        }
+
+        [TestMethod]
+        public void Can_Get_Transactions_ByDateRange()
+        {
+            Authenticate();
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+               .GetCurrentMethod().Name);
+
+            var from = DateTime.Parse("01/01/2015");
+            var to = DateTime.Today;
+
+            foreach (dynamic d in config)
+            {
+                if (d.Key.ToString() == "From")
+                    from = DateTime.Parse(d.Value.ToString());
+                if (d.Key.ToString() == "To")
+                    to = DateTime.Parse(d.Value.ToString());
+            }
+            try
+            {
+                var actual = OrionApi.Portfolio.Transactions(startDate: from, endDate: to);
+            Assert.IsTrue(actual.Count > 0);
+            }
+            catch (Exception ex)
+            {
+                HandleError(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name
+                                   , System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
+            }
+            
         }
     }
 }

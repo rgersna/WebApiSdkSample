@@ -42,7 +42,8 @@ namespace OrionApiSdk.Tests
             }
             catch (Exception ex)
             {
-                HandleError(System.Reflection.MethodInfo.GetCurrentMethod().Name, ex);
+                HandleError(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name
+                                   , System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
             }
         }
 
@@ -66,8 +67,8 @@ namespace OrionApiSdk.Tests
             }
             catch (Exception ex)
             {
-                HandleError(System.Reflection.MethodInfo.GetCurrentMethod().Name, ex);
-                Assert.Fail();
+                HandleError(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name
+                                   , System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
             }
         }
  

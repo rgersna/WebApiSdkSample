@@ -356,8 +356,10 @@ namespace OrionApiSdk.Code
                     }
                 }
             }
+            //strip out that leading ampersand
+            var cleanEndpoint = endpoint.Replace("?&", "?");
 
-            var j = base.GetJson(endpoint);
+            var j = base.GetJson(cleanEndpoint);
             var d = JsonConvert.DeserializeObject<AssetVerbose>(j);
 
             return d;
@@ -406,16 +408,16 @@ namespace OrionApiSdk.Code
         #endregion
 
         #region Transactions
-        public List<Transaction> Transactions(TradeStatuses status = 0
+        public List<Transaction> Transactions(TradeStatuses? status = null
          , DateTime? startDate = null, DateTime? endDate = null, int[] transTypeIds = null
          , int? clientId = null, int? registrationId = null, int? accountId = null, int? assetId = null
          , int? transactionId = null, ReturnStyle? returnStyle = null)
         {
             var endpoint = new StringBuilder();
-            endpoint.AppendFormat(@"Portfolio/Transactions?status={status}&startDate={startDate}&endDate={endDate}
-            &clientId={clientId}&registrationId={registrationId}&accountId={accountId}&assetId={assetId}
-            &transactionId={transactionId}&returnStyle={returnStyle}"
-                , status, startDate, endDate, clientId, registrationId, accountId, assetId, transactionId, returnStyle);
+            endpoint.AppendFormat(@"Portfolio/Transactions?status={0}&startDate={1}&endDate={2}
+            &clientId={3}&registrationId={4}&accountId={5}&assetId={6}
+            &transactionId={7}&returnStyle={8}"
+                , status, FDate(startDate), FDate(endDate), clientId, registrationId, accountId, assetId, transactionId, returnStyle);
 
             if (transTypeIds != null)
                 for (int i = 0; i < transTypeIds.Length; i++)
@@ -513,5 +515,12 @@ namespace OrionApiSdk.Code
 
         #endregion
 
+        private string FDate(DateTime? d)
+        {
+            if(d.HasValue)
+                return d.Value.ToString("yyyy-MM-dd");
+            else
+                return null;
+        }
     }
 }

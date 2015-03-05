@@ -66,8 +66,8 @@ namespace OrionApiSdk.Classes.Portfolio
         public decimal excludeAmount { get; set; }
         public ExcludeAmountTypes excludeAmountType { get; set; }
         public Entity excludePercentOf { get; set; }
-        public DateTime excludeEndDate { get; set; }
-        public DateTime excludeStartDate { get; set; }
+        public DateTime? excludeEndDate { get; set; }
+        public DateTime? excludeStartDate { get; set; }
     }
 
     public class AssetPortfolio

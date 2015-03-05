@@ -60,7 +60,6 @@
     <Compile Include="Code\PortfolioTests.cs" />
     <Compile Include="Code\TestBase.cs" />
     <Compile Include="Code\TradingTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -152,29 +152,12 @@ namespace OrionApiSdk.Tests
                 (OrionApiSdk.Classes.Enums.OrionEnvironment)Enum.Parse(typeof(OrionApiSdk.Classes.Enums.OrionEnvironment), secret.Environment.ToString()));
         }
 
-        protected void HandleError(string methodName, Exception ex)
+        protected void HandleError(string codebase, string methodName, Exception ex)
         {
-            var msg = String.Empty;
-            if (!String.IsNullOrEmpty(ex.Message))
-            {
-                if (ex.Message.Contains("{"))
-                {
-                    dynamic apiResult = Newtonsoft.Json.JsonConvert.DeserializeObject(ex.Message);
-                    msg = String.Format("ApiResult: {0}. Error: {1}, Details: {2}, Trace:{3}",
-                        apiResult.UserException.Detail.ToString(), ex.Message, ex.InnerException, ex.StackTrace);
-                }
-                else
-                {
-                    msg = ex.Message;
-                }
-            }
-            var file =
-                String.Format(@"C:\Temp\OrionApiSdk.Code.Tests.{0}.{1}_Errors{2}.mstest"
-                , this.GetType().Name
-                , methodName
-                , DateTime.Now.ToString("mmDDYYhhmmsss"));
-            System.IO.File.WriteAllText(file, msg);
-            Assert.Fail(msg);
+            System.IO.File.AppendAllText(String.Format(@"c:\temp\{0}_TestsResults_{1}.txt", codebase, DateTime.Today.ToString("MM-yyyy"))
+                  , String.Format("{0}.{1}.{2}.E:{3}\n", codebase, methodName
+                  , DateTime.Now.ToString("MM-dd-yyyy_hh:mm:ss"), ex.Message));
+            Assert.Fail(ex.Message);
         }
 
     }

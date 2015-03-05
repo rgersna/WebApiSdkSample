@@ -13,6 +13,7 @@ namespace OrionApiSdk.Classes.Enums
         Client = 5,
         Registration = 6,
         Account = 7,
-        Advisor = 17
+        Advisor = 17,
+        Asset = 999
     }
 }

@@ -16,19 +16,19 @@ namespace OrionApiSdk.Classes.Portfolio
         public string AccountNumber { get; set; }
         public TradeStatuses Status { get; set; }
         public string Type { get; set; }
-        public DateTime TransTime { get; set; }
+        public DateTime? TransTime { get; set; }
         public int AssetId { get; set; }
         public string Cusip { get; set; }
         public string Notes { get; set; }
         public int TransTypeId { get; set; }
-        public int ContributionCodeId { get; set; }
-        public int DistributionCodeId { get; set; }
+        public int? ContributionCodeId { get; set; }
+        public int? DistributionCodeId { get; set; }
         public int AccountId { get; set; }
         public string ManagementStyle { get; set; }
-        public int Payee { get; set; }
+        public int? Payee { get; set; }
         public string AdvisorNotes { get; set; }
         public string State { get; set; }
-        public DateTime SettleDate { get; set; }
+        public DateTime? SettleDate { get; set; }
         public string TradeReferenceNumber { get; set; }
         public string TransactionLinkCode { get; set; }
         public string CreatedBy { get; set; }
