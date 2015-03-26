@@ -13,6 +13,22 @@ namespace OrionApiSdk.Code
         internal Portfolio(HttpClient httpClient) : base(httpClient) { }
 
         #region Clients
+
+        /// <summary>
+        /// Returns a verbose client object for the specified client id.
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <returns></returns>
+        public Client Client(int clientId)
+        {
+            var endpoint = string.Format("Portfolio/Clients/{0}", clientId);
+
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Client>(j);
+
+            return d;
+        }
+
         public List<Client> Clients(int top = 50000, int skip = 0, bool? hasValue = null, bool? isActive = null)
         {
             var endpoint = string.Format("Portfolio/Clients?hasValue={0}&isActive={1}&$top={2}&$skip={3}", hasValue, isActive, top, skip);
@@ -219,9 +235,14 @@ namespace OrionApiSdk.Code
             ,DateTime? createdDateStart = null, AccountFilterValues? newAccountFilter = null, string accountFilter = null
             ,ReturnStyle returnStyle = ReturnStyle.Standard)
         {
+            string dateString = null;
+            if (createdDateStart.HasValue)
+                dateString = createdDateStart.Value.ToShortDateString();
+
             var endpoint = string.Format(@"Portfolio/Accounts?isActive={0}&isManaged={1}&createdDateStart={2}
                 &newAccountFilter={3}&accountFilter={4}&returnStyle={5}&$top={6}&$skip={7}"
                 , isActive, isManaged, createdDateStart, newAccountFilter, accountFilter, returnStyle, top, skip);
+
             var j = base.GetJson(endpoint);
             var d = JsonConvert.DeserializeObject<List<Account>>(j);
 

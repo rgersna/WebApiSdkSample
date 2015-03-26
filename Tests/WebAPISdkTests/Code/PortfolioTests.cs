@@ -54,6 +54,19 @@ namespace OrionApiSdk.Tests
         }
 
         [TestMethod]
+        public void Accounts_CanLimitResultsTest()
+        {
+            Authenticate();
+
+            var from = DateTime.Parse("07/15/2014");
+            var maxRows = 10;
+            var actual = OrionApi.Portfolio.Accounts(createdDateStart: from, top: maxRows, isActive: true);
+            Assert.IsTrue(actual.Count > 0);
+
+        }
+
+
+        [TestMethod]
         public void AssetsTest()
         {
             Authenticate();
