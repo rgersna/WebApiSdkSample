@@ -239,12 +239,22 @@ namespace OrionApiSdk.Tests
         [TestMethod]
         public void Can_Get_Product_By_Cusip()
         {
-            Authenticate();
-            var cusip = "037833100";
-            var actual = OrionApi.Portfolio.Products(exactCusip: cusip);
-            Assert.IsNotNull(actual);
-            Assert.IsTrue(actual.Count.Equals(1));
-            Assert.IsTrue(actual[0].productName == "Apple Inc");
+            try
+            {
+                Authenticate();
+                Assert.IsTrue(!String.IsNullOrEmpty(OrionApi.AuthToken));
+                var cusip = "037833100";
+                var actual = OrionApi.Portfolio.Products(exactCusip: cusip);
+                Assert.IsNotNull(actual);
+                Assert.IsTrue(actual.Count.Equals(1));
+                Assert.IsTrue(actual[0].productName == "Apple Inc");
+            }
+            catch (Exception ex)
+            {
+
+                Assert.IsTrue(ex == null);
+            }
+          
         }
 
         [TestMethod]
@@ -286,6 +296,21 @@ namespace OrionApiSdk.Tests
                                    , System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
             }
             
+        }
+
+        [TestMethod]
+        public void Can_Get_Client_AndThen_SSN()
+        {
+            //call the client - get teh masked ssn back.
+            //call another method to get the actual ssn
+            //this is intentional. 
+            //We require special privileges and a note indicating the purpose of viewing the ssn.  
+            //Each view is logged for compliance, and for this reason, you must retrieve the ssn with a separate call, one at a time.
+            //Client SSN:
+            //https://testapi.orionadvisor.com/api/Help/Api/PUT-v1-Portfolio-Clients-key-SSNTaxId
+            //Registration SSN:
+            //https://testapi.orionadvisor.com/api/Help/Api/PUT-v1-Portfolio-Registrations-key-SSNTaxId
+
         }
     }
 }

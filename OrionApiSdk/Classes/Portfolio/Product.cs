@@ -64,7 +64,7 @@ namespace OrionApiSdk.Classes.Portfolio
         public string productCategoryName { get; set; }
         public string productCategoryParentCategory { get; set; }
         public int productCategorySortOrder { get; set; }
-        public int riskCategoryProductDescriptionProviderId { get; set; }
+        public int? riskCategoryProductDescriptionProviderId { get; set; }
         public int assetClassProductDescriptionProviderId { get; set; }
         public string orionSub { get; set; }
         public string orionCat { get; set; }
