@@ -299,17 +299,34 @@ namespace OrionApiSdk.Tests
         }
 
         [TestMethod]
+        ///We require special privileges and a note indicating the purpose of viewing the ssn.  
+        ///Each view is logged for compliance, and for this reason, you must retrieve the ssn with a separate call, one at a time.
+        ///Client SSN:
+        ///https://testapi.orionadvisor.com/api/Help/Api/PUT-v1-Portfolio-Clients-key-SSNTaxId
+        ///Registration SSN:
+        ///https://testapi.orionadvisor.com/api/Help/Api/PUT-v1-Portfolio-Registrations-key-SSNTaxId
         public void Can_Get_Client_AndThen_SSN()
         {
-            //call the client - get teh masked ssn back.
-            //call another method to get the actual ssn
-            //this is intentional. 
-            //We require special privileges and a note indicating the purpose of viewing the ssn.  
-            //Each view is logged for compliance, and for this reason, you must retrieve the ssn with a separate call, one at a time.
-            //Client SSN:
-            //https://testapi.orionadvisor.com/api/Help/Api/PUT-v1-Portfolio-Clients-key-SSNTaxId
-            //Registration SSN:
-            //https://testapi.orionadvisor.com/api/Help/Api/PUT-v1-Portfolio-Registrations-key-SSNTaxId
+            Authenticate();
+
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var clientId = 0;
+            var reason = String.Empty;
+
+            foreach (dynamic d in config)
+            {
+                if (d.Key.ToString() == "ClientId")
+                    clientId = int.Parse(d.Value.ToString());
+                if (d.Key.ToString() == "Reason")
+                    reason = d.Value.ToString();
+            }
+
+            var client = OrionApi.Portfolio.Client(clientId);
+            Assert.IsNotNull(client);
+            var ssn = OrionApi.Portfolio.ClientSSN(client.id, reason);
+            Assert.IsNotNull(ssn);
 
         }
     }

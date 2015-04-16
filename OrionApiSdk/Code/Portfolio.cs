@@ -66,7 +66,6 @@ namespace OrionApiSdk.Code
             return d;
         }
 
-
         public List<SimpleValue> ClientsSearchValue(string searchText)
         {
             var endpoint = string.Format("Portfolio/Clients/Value/Search?search={0}", searchText);
@@ -133,6 +132,18 @@ namespace OrionApiSdk.Code
             return d;
         }
 
+        public string ClientSSN(int clientId, string reason)
+        {
+            var endpoint = string.Format("Portfolio/Clients/{0}/SSNTaxId", clientId);
+            dynamic req = new System.Dynamic.ExpandoObject();
+            //req.SSN = "";
+            req.Reason = reason;
+            //var req = new UpdateSSN { Reason = reason, SSN = null };
+            var j = base.PutJson(endpoint, req as object);
+            var d = JsonConvert.DeserializeObject<string>(j);
+            
+            return d;
+        }
         #endregion
 
         #region Registrations

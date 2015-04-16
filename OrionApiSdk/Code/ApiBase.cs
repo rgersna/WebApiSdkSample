@@ -50,8 +50,10 @@ namespace OrionApiSdk.Code
 
             var response = httpClient.PutAsync(endpoint, content).Result;
 
-            var j = response.Content.ReadAsStringAsync().Result;
-
+            //var j = response.Content.ReadAsStringAsync().Result;
+            var jr = response.Content.ReadAsStringAsync();
+            var debugstring = JsonConvert.SerializeObject(jr);
+            var j = jr.Result;
             if (!response.IsSuccessStatusCode)
             {
                 // try to parse the validation errors.
