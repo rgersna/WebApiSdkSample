@@ -237,6 +237,16 @@ namespace OrionApiSdk.Code
             return d;
         }
 
+        public Representative Representative(int repId)
+        {
+            var endpoint = string.Format("Portfolio/Representative/{0}", repId);
+
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Representative>(j);
+
+            return d;
+        }
+
 
         #endregion
 
