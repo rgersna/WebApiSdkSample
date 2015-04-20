@@ -329,5 +329,23 @@ namespace OrionApiSdk.Tests
             Assert.IsNotNull(ssn);
 
         }
+
+        [TestMethod]
+        public void Can_Get_RepBy_Id()
+        {
+            Authenticate();
+            var config = GetConfigForMethod(this.GetType().Name, System.Reflection.MethodInfo
+                .GetCurrentMethod().Name);
+
+            var repId = 0;
+
+            foreach (dynamic d in config)
+                if (d.Key.ToString() == "RepId")
+                    repId = int.Parse(d.Value.ToString());
+
+            var rep = OrionApi.Portfolio.Representatives(repId);
+            Assert.IsNotNull(rep);
+        }
+
     }
 }
