@@ -252,6 +252,23 @@ namespace OrionApiSdk.Code
 
         #region Accounts
       
+        public Account Accounts(int accountId)
+        {
+            var endpoint = String.Format("Portfolio/Accounts/{0}", accountId);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Account>(j);
+            return d;
+        }
+
+        public Account Accounts(string accountNumber)
+        {
+            var endpoint = String.Format("Portfolio/Accounts/{0}", accountNumber);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<Account>(j);
+            return d;
+        }
+
+
         public List<Account> Accounts(int top = 50000, int skip = 0, bool? isActive = null, bool? isManaged = null
             ,DateTime? createdDateStart = null, AccountFilterValues? newAccountFilter = null, string accountFilter = null
             ,ReturnStyle returnStyle = ReturnStyle.Standard)
