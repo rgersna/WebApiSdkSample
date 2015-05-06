@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77734886-E0B0-4ED0-AB08-6FDC9DD07DBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OrionApiSdk</RootNamespace>
+    <AssemblyName>OrionApiSdk</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>b29b0563</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release 4.5|AnyCPU'">
+    <OutputPath>bin\Release45\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Authorization\User.cs" />
+    <Compile Include="Classes\Enums\AssetVerboseOptions.cs" />
+    <Compile Include="Classes\Enums\AccountFilterValues.cs" />
+    <Compile Include="Classes\Enums\Entity.cs" />
+    <Compile Include="Classes\Enums\ExcludeAmountTypes.cs" />
+    <Compile Include="Classes\Enums\OrionEnvironment.cs" />
+    <Compile Include="Classes\Enums\PricingStatus.cs" />
+    <Compile Include="Classes\Enums\ProductStatus.cs" />
+    <Compile Include="Classes\Enums\ProductTypes.cs" />
+    <Compile Include="Classes\Enums\ProductUses.cs" />
+    <Compile Include="Classes\Enums\RegistrationExpands.cs" />
+    <Compile Include="Classes\Enums\ReturnStyle.cs" />
+    <Compile Include="Classes\LaserApp\Form.cs" />
+    <Compile Include="Classes\Portfolio\Account.cs" />
+    <Compile Include="Classes\Portfolio\AccountSimple.cs" />
+    <Compile Include="Classes\Portfolio\AccountSimpleValue.cs" />
+    <Compile Include="Classes\Portfolio\AccountTypeSimple.cs" />
+    <Compile Include="Classes\Portfolio\AccountVerbose.cs" />
+    <Compile Include="Classes\Portfolio\Asset.cs" />
+    <Compile Include="Classes\Portfolio\AssetVerbose.cs" />
+    <Compile Include="Classes\Portfolio\Client.cs" />
+    <Compile Include="Classes\Portfolio\ClientSimple.cs" />
+    <Compile Include="Classes\Portfolio\ClientVerbose.cs" />
+    <Compile Include="Classes\Portfolio\AccountStatus.cs" />
+    <Compile Include="Classes\Portfolio\CostBasis.cs" />
+    <Compile Include="Classes\Portfolio\EntityOption.cs" />
+    <Compile Include="Classes\Portfolio\PortfolioTransactionAdditionalInformation.cs" />
+    <Compile Include="Classes\Portfolio\Product.cs" />
+    <Compile Include="Classes\Portfolio\ProductCategory.cs" />
+    <Compile Include="Classes\Portfolio\Registration.cs" />
+    <Compile Include="Classes\Portfolio\RegistrationSimple.cs" />
+    <Compile Include="Classes\Portfolio\RegistrationVerbose.cs" />
+    <Compile Include="Classes\Portfolio\Representative.cs" />
+    <Compile Include="Classes\Portfolio\RepresentativeSimple.cs" />
+    <Compile Include="Classes\Simple.cs" />
+    <Compile Include="Classes\SimpleValue.cs" />
+    <Compile Include="Classes\Enums\TradeStatuses.cs" />
+    <Compile Include="Classes\Portfolio\Transaction.cs" />
+    <Compile Include="Classes\Portfolio\TransactionBilling.cs" />
+    <Compile Include="Classes\Portfolio\TransactionPortfolio.cs" />
+    <Compile Include="Classes\Portfolio\TransactionVerbose.cs" />
+    <Compile Include="Classes\Portfolio\UpdateSSN.cs" />
+    <Compile Include="Classes\Trading\DistributionCode.cs" />
+    <Compile Include="Classes\Trading\Transaction.cs" />
+    <Compile Include="Code\ApiBase.cs" />
+    <Compile Include="Code\Authorization.cs" />
+    <Compile Include="Code\LaserApp.cs" />
+    <Compile Include="Code\OrionConnectLinks.cs" />
+    <Compile Include="Code\Portfolio.cs" />
+    <Compile Include="Code\Trading.cs" />
+    <Compile Include="OrionApi.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
