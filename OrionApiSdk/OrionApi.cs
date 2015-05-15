@@ -22,6 +22,11 @@ namespace OrionApiSdk
         private const string LOCALAPIURL = "http://api.orionadvisor.local/api/v1/";
         private const string LOCALCONNECTURL = "http://testapp.orionadvisor.local/integration.html";
 
+        private static Code.ApiBase _apiBase;
+        public static Code.ApiBase ApiBase
+        {
+            get { return _apiBase ?? (_apiBase = new Code.ApiBase(_httpClient)); }
+        }
 
         private static Code.Portfolio _portfolio;
         public static Code.Portfolio Portfolio 

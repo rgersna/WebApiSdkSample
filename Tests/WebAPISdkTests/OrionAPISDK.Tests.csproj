@@ -60,9 +60,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Code\PortfolioTests.cs" />
-    <Compile Include="Code\TestBase.cs" />
-    <Compile Include="Code\TradingTests.cs" />
+    <Compile Include="MiscTests.cs" />
+    <Compile Include="PortfolioTests.cs" />
+    <Compile Include="TestBase.cs" />
+    <Compile Include="TradingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

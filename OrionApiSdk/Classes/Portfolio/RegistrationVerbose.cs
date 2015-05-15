@@ -63,45 +63,45 @@ namespace OrionApiSdk.Classes.Portfolio
 
     public class RegistrationNotes
     {
-        public int Id { get; set; }
-        public string Text { get; set; }
-        public string EditedBy { get; set; }
-        public DateTime EditedDate { get; set; }
-        public string Category { get; set; }
-        public bool IsWebVisible { get; set; }
+        public int id { get; set; }
+        public string text { get; set; }
+        public string editedBy { get; set; }
+        public DateTime editedDate { get; set; }
+        public string category { get; set; }
+        public bool isWebVisible { get; set; }
     }
 
     public class RegistrationBeneficiary
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime DOB { get; set; }
-        public string Type { get; set; }
-        public string Relation { get; set; }
-        public decimal Percentage { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public string SSN { get; set; }
-        public string Reason { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public DateTime? dob { get; set; }
+        public string type { get; set; }
+        public string relation { get; set; }
+        public decimal percentage { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
+        public string ssN_TaxID { get; set; }
+        public string reason { get; set; }
     }
 
     public class EntityOptions
     {
-        public EntityOption Entity { get; set; }
-        public int EquityId { get; set; }
-        public string EntityName { get; set; }
-        public int UserDefineDefinitionId { get; set; }
-        public int UserDefineDataId { get; set; }
-        public string Name { get; set; }
-        public string Category { get; set; }
-        public int Type { get; set; }
-        public string Code { get; set; }
-        public int Sequence { get; set; }
-        public string Value { get; set; }
-        public object Options { get; set; }
-        public string Input { get; set; }
-        public string ChildParameter { get; set; }
+        public string childParameter { get; set; }
+        public EntityOption entity { get; set; }
+        public int entityId { get; set; }
+        public string entityName { get; set; }
+        public int userDefineDefinitionId { get; set; }
+        public int userDefineDataId { get; set; }
+        public string name { get; set; }
+        public string category { get; set; }
+        public int type { get; set; }
+        public string code { get; set; }
+        public int sequence { get; set; }
+        public string value { get; set; }
+        public object options { get; set; }
+        public string input { get; set; }
     }
 }

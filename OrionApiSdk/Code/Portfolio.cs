@@ -269,7 +269,6 @@ namespace OrionApiSdk.Code
             return d;
         }
 
-
         #endregion
 
         #region Representatives/Advisors

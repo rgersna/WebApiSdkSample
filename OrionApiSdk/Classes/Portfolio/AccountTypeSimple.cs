@@ -12,6 +12,7 @@ namespace OrionApiSdk.Classes.Portfolio
         public int id { get; set; }
         public string name { get; set; }
         public string accountType { get; set; }
+        public bool isQualified { get; set; }
     }
 
 }
