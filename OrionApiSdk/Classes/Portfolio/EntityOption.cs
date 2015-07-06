@@ -2,22 +2,22 @@
 using OrionApiSdk.Classes.Enums;
 namespace OrionApiSdk.Classes.Portfolio
 {
-    //public class EntityOption
-    //{
-    //    public Entity Entity { get; set; }
-    //    public int EntityId { get; set; }
-    //    public string EntityName { get; set; }
-    //    public int UserDefineDefinitionId { get; set; }
-    //    public int UserDefineDataId { get; set; }
-    //    public string Name { get; set; }
-    //    public string Category { get; set; }
-    //    public int Type { get; set; }
-    //    public string Code { get; set; }
-    //    public int Sequence { get; set; }
-    //    public string Value { get; set; }
-    //    public object Options { get; set; }
-    //    public string Input { get; set; }
-    //    public string ChildParameter { get; set; }
+    public class EntityOption
+    {
+        public object childParameter { get; set; }
+        public string entity { get; set; }
+        public int? entityId { get; set; }
+        public string entityName { get; set; }
+        public int? userDefineDefinitionId { get; set; }
+        public int? userDefineDataId { get; set; }
+        public string name { get; set; }
+        public string category { get; set; }
+        public int? type { get; set; }
+        public string code { get; set; }
+        public int? sequence { get; set; }
+        public string value { get; set; }
+        public string[] options { get; set; }
+        public string input { get; set; }
+    }
 
-    //}
 }

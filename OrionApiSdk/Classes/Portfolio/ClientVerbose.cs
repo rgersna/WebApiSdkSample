@@ -145,40 +145,8 @@ namespace OrionApiSdk.Classes.Portfolio
         public bool systemGenerated { get; set; }
     }
 
-    //public class Userdefinedfield
-    //{
-    //    public object childParameter { get; set; }
-    //    public string entity { get; set; }
-    //    public int? entityId { get; set; }
-    //    public object entityName { get; set; }
-    //    public int? userDefineDefinitionId { get; set; }
-    //    public int? userDefineDataId { get; set; }
-    //    public string name { get; set; }
-    //    public object category { get; set; }
-    //    public int? type { get; set; }
-    //    public string code { get; set; }
-    //    public int? sequence { get; set; }
-    //    public string value { get; set; }
-    //    public object[] options { get; set; }
-    //    public object input { get; set; }
-    //}
+  
 
-    public class EntityOption
-    {
-        public object childParameter { get; set; }
-        public string entity { get; set; }
-        public int? entityId { get; set; }
-        public object entityName { get; set; }
-        public int? userDefineDefinitionId { get; set; }
-        public int? userDefineDataId { get; set; }
-        public string name { get; set; }
-        public string category { get; set; }
-        public int? type { get; set; }
-        public string code { get; set; }
-        public int? sequence { get; set; }
-        public string value { get; set; }
-        public object options { get; set; }
-        public object input { get; set; }
-    }
+   
 
 }

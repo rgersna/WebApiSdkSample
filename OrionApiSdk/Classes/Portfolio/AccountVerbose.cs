@@ -57,7 +57,7 @@ namespace OrionApiSdk.Classes.Portfolio
         public object accountManagers { get; set; }
         public object recurringAdjustments { get; set; }
         public object generalAccounts { get; set; }
-        public object userDefinedFields { get; set; }
-        public object entityOptions { get; set; }
+        public EntityOption[] userDefinedFields { get; set; }
+        public EntityOption[] entityOptions { get; set; }
     }
 }

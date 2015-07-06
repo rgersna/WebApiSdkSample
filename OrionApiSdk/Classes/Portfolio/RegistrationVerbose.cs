@@ -86,22 +86,4 @@ namespace OrionApiSdk.Classes.Portfolio
         public string ssN_TaxID { get; set; }
         public string reason { get; set; }
     }
-
-    public class EntityOptions
-    {
-        public string childParameter { get; set; }
-        public EntityOption entity { get; set; }
-        public int entityId { get; set; }
-        public string entityName { get; set; }
-        public int userDefineDefinitionId { get; set; }
-        public int userDefineDataId { get; set; }
-        public string name { get; set; }
-        public string category { get; set; }
-        public int type { get; set; }
-        public string code { get; set; }
-        public int sequence { get; set; }
-        public string value { get; set; }
-        public object options { get; set; }
-        public string input { get; set; }
-    }
 }

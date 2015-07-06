@@ -12,7 +12,7 @@ namespace OrionApiSdk.Classes.Portfolio
         public TransactionBilling Billing { get; set; }
         public CostBasis CostBasis { get; set; }
         public PortfolioTransactionAdditionalInformation AdditionalInformation { get; set; }
-        public EntityOption UserDefinedFields { get; set; }
-        public EntityOption EntityOptions { get; set; }
+        public EntityOption[] UserDefinedFields { get; set; }
+        public EntityOption[] EntityOptions { get; set; }
     }
 }
