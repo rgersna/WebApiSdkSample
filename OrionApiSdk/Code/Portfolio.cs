@@ -419,6 +419,14 @@ namespace OrionApiSdk.Code
         }
         #endregion
 
+        public List<EntityOption> AccountsUserDefinedFields(string accountNumber)
+        {
+            var endpoint = String.Format("Portfolio/Accounts/{0}/UserDefinedFields", accountNumber);
+            var j = base.GetJson(endpoint);
+            var d = JsonConvert.DeserializeObject<List<EntityOption>>(j);
+            return d;
+        }
+
         #endregion
 
         #region Assets
