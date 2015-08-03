@@ -154,3 +154,10 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/build
+/packages/Microsoft.Bcl.1.1.10/lib
+/packages/Microsoft.Net.Http.2.2.29/lib
